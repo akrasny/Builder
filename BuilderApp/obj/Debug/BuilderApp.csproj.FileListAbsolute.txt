@@ -1,0 +1,5 @@
+C:\Projects\Builder\BuilderApp\bin\BuilderApp.dll
+C:\Projects\Builder\BuilderApp\bin\BuilderApp.pdb
+C:\Projects\Builder\BuilderApp\obj\Debug\BuilderApp.csprojResolveAssemblyReference.cache
+C:\Projects\Builder\BuilderApp\obj\Debug\BuilderApp.dll
+C:\Projects\Builder\BuilderApp\obj\Debug\BuilderApp.pdb

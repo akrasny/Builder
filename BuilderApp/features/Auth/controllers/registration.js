@@ -1,4 +1,4 @@
-﻿angular.module('Builder').controller('RegistrationCtrl', ['$scope', '$http', 'AuthSvc', function ($scope, $http, AuthSvc) {
+﻿angular.module('Builder').controller('RegistrationCtrl', ['$scope', '$http', '$log', 'AuthSvc', 'AppCfg', function ($scope, $http, $log, AuthSvc, AppCfg) {
     $scope.agree = false;
     $scope.firstName = '';
     $scope.lastName = '';
@@ -7,30 +7,16 @@
     $scope.password = '';
     $scope.confirmPassword = '';
     $scope.register = function () {
-        //var data = {
-        //    Email: self.registerEmail(),
-        //    Password: self.registerPassword(),
-        //    ConfirmPassword: self.registerPassword2()
-        //};
-
         $http.get('/api/values').
           success(function (data, status, headers, config) {
-              // this callback will be called asynchronously
-              // when the response is available
+              $log.log("Log Msg");
+              $log.info("Info Msg");
+              $log.debug("Debug Msg");
+              $log.warn("Warn Msg");
+              $log.error("Error Msg");
           }).
           error(function (data, status, headers, config) {
-              // called asynchronously if an error occurs
-              // or server returns response with an error status.
           });
-
-        //$.ajax({
-        //    type: 'POST',
-        //    url: '/api/Account/Register',
-        //    contentType: 'application/json; charset=utf-8',
-        //    data: JSON.stringify(data)
-        //}).done(function (data) {
-        //    self.result("Done!");
-        //}).fail(showError);
     };
     $scope.signIn = function () {
     };
