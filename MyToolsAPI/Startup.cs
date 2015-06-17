@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(BuilderAPI.Startup))]
+[assembly: OwinStartup(typeof(MyToolsAPI.Startup))]
 
-namespace BuilderAPI
+namespace MyToolsAPI
 {
     public partial class Startup
     {

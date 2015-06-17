@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var app = angular.module('Builder', ['ngRoute']);
+var app = angular.module('MyTools', ['ngRoute']);
 
 //config routs 
 app.config(['$routeProvider',

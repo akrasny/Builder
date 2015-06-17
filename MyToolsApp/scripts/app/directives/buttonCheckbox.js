@@ -1,4 +1,4 @@
-﻿angular.module('Builder').directive('buttonCheckbox', function () {
+﻿angular.module('MyTools').directive('buttonCheckbox', function () {
     return {
         restrict: 'E',
         replace: true,

@@ -1,4 +1,4 @@
-﻿angular.module('Builder').controller('RegistrationCtrl', ['$scope', '$http', '$log', '$location', 'AuthSvc', function ($scope, $http, $log, $location, AuthSvc) {
+﻿angular.module('MyTools').controller('RegistrationCtrl', ['$scope', '$http', '$log', '$location', 'AuthSvc', function ($scope, $http, $log, $location, AuthSvc) {
     $scope.agree = false;
     $scope.user = {
         FirstName: '',

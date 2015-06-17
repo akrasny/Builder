@@ -11,7 +11,7 @@ using Owin;
 using Providers;
 using Models;
 
-namespace BuilderAPI
+namespace MyToolsAPI
 {
     public partial class Startup
     {

@@ -1,4 +1,4 @@
-namespace BuilderAPI.Migrations
+namespace MyToolsAPI.Migrations
 {
     using System;
     using System.Data.Entity;

@@ -1,4 +1,4 @@
-﻿angular.module('Builder').factory('AuthSvc', function () {
+﻿angular.module('MyTools').factory('AuthSvc', function () {
     //private variables
     var tokenKey = 'accessToken';
 
