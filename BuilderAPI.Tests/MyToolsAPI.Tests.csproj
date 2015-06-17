@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BuilderAPI.Tests</RootNamespace>
     <AssemblyName>BuilderAPI.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <IsCodedUITest>False</IsCodedUITest>
@@ -53,9 +53,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BuilderAPI\BuilderAPI.csproj">
+    <ProjectReference Include="..\BuilderAPI\MyToolsAPI.csproj">
       <Project>{1D3504D8-3D6F-4E59-BA71-C0C3C7FAD3A5}</Project>
-      <Name>BuilderAPI</Name>
+      <Name>MyToolsAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -60,9 +60,9 @@ C:\Projects\Builder\BuilderAPI\bin\System.Web.Razor.xml
 C:\Projects\Builder\BuilderAPI\bin\System.Web.WebPages.xml
 C:\Projects\Builder\BuilderAPI\bin\System.Web.WebPages.Deployment.xml
 C:\Projects\Builder\BuilderAPI\bin\System.Web.WebPages.Razor.xml
-C:\Projects\Builder\BuilderAPI\obj\Debug\BuilderAPI.csprojResolveAssemblyReference.cache
 C:\Projects\Builder\BuilderAPI\obj\Debug\BuilderAPI.Migrations.InitialCreate.resources
 C:\Projects\Builder\BuilderAPI\obj\Debug\BuilderAPI.csproj.GenerateResource.Cache
 C:\Projects\Builder\BuilderAPI\bin\System.Web.Cors.dll
 C:\Projects\Builder\BuilderAPI\bin\System.Web.Http.Cors.dll
 C:\Projects\Builder\BuilderAPI\bin\System.Web.Http.Cors.xml
+C:\Projects\Builder\BuilderAPI\obj\Debug\BuilderAPI.csprojResolveAssemblyReference.cache

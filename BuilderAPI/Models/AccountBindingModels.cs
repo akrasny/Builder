@@ -55,7 +55,8 @@ namespace Models
         public string LastName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$", ErrorMessage = @"Password must be at least 6 characters, 
+                            no more than 15 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
