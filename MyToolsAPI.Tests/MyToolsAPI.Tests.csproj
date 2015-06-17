@@ -6,8 +6,8 @@
     <ProjectGuid>{BD282E84-477B-46DA-84DA-2FE9921C509A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BuilderAPI.Tests</RootNamespace>
-    <AssemblyName>BuilderAPI.Tests</AssemblyName>
+    <RootNamespace>MyToolsAPI.Tests</RootNamespace>
+    <AssemblyName>MyToolsAPI.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,7 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BuilderAPI\MyToolsAPI.csproj">
+    <ProjectReference Include="..\MyToolsAPI\MyToolsAPI.csproj">
       <Project>{1D3504D8-3D6F-4E59-BA71-C0C3C7FAD3A5}</Project>
       <Name>MyToolsAPI</Name>
     </ProjectReference>
