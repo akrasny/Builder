@@ -1,16 +1,18 @@
-﻿angular.module('MyTools').directive('strictPassword', function () {
+﻿angular.module('MyTools').directive('regExpValidation', function () {
     return {
+        restrict: 'A',
         require: 'ngModel',
+        scope: {
+            regExpValidation: '@'
+        },
         link: function (scope, elm, attrs, ctrl) {
-            ctrl.$validators.strictPassword = function (modelValue, viewValue) {
+            ctrl.$validators.regExpValidation = function (modelValue, viewValue) {
                 if (ctrl.$isEmpty(modelValue)) {
                     // consider empty models to be valid
                     return true;
                 }
 
-                var regexp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/;
-
-                if (regexp.test(viewValue)) {
+                if (new RegExp(scope.regExpValidation).test(viewValue)) {
                     // it is valid
                     return true;
                 }

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Folder Include="images\" />
     <Folder Include="Properties\" />
+    <Folder Include="scripts\app\services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.json" />
@@ -53,9 +54,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.css" />
     <Content Include="features\Auth\controllers\auth.js" />
     <Content Include="features\Auth\controllers\registration.js" />
-    <Content Include="features\Auth\directives\strictPassword.js" />
+    <Content Include="scripts\app\directives\regExpValidation.js" />
     <Content Include="features\Auth\partials\authmenu.htm" />
     <Content Include="features\Auth\services\auth.js" />
     <Content Include="features\Auth\templates\registration.htm" />
@@ -76,7 +78,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\app\directives\buttonCheckbox.js" />
-    <Content Include="scripts\app\services\utils.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
