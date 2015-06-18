@@ -1,4 +1,4 @@
-﻿angular.module('MyTools').controller('RegistrationCtrl', ['$scope', '$http', '$log', '$location', 'AuthSvc', function ($scope, $http, $log, $location, AuthSvc) {
+﻿angular.module('MyTools').controller('RegistrationCtrl', ['$scope', '$http', '$log', '$location', 'AuthSvc', 'UtilsSvc', function ($scope, $http, $log, $location, AuthSvc, UtilsSvc) {
     $scope.agree = false;
     $scope.user = {
         FirstName: '',
@@ -9,9 +9,6 @@
         ConfirmPassword: ''
     };
     $scope.register = function () {
-        // Password matching expression. Password must be at least 4 characters, no more than 8 characters, 
-        // and must include at least one upper case letter, one lower case letter, and one numeric digit.
-        // ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$
         if ($scope.registrationForm.$valid) {
             $http.post('/api/Account/Register', $scope.user).
               success(function (data, status, headers, config) {
@@ -27,4 +24,9 @@
     };
     $scope.signIn = function () {
     };
+}]);
+
+// Register strict-password directive
+angular.module('MyTools').config(['UtilsSvcProvider', function (UtilsSvcProvider) {
+    UtilsSvcProvider.$get().createValidationRule('strictPassword', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/);
 }]);
