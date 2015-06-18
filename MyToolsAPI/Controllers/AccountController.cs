@@ -42,7 +42,7 @@ namespace Controllers
         {
             get
             {
-                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _userManager ?? (Request != null ? Request.GetOwinContext().GetUserManager<ApplicationUserManager>() : null);
             }
             private set
             {
@@ -379,7 +379,10 @@ namespace Controllers
         {
             if (disposing)
             {
-                UserManager.Dispose();
+                if (UserManager != null)
+                {
+                    UserManager.Dispose();
+                }
             }
 
             base.Dispose(disposing);
