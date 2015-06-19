@@ -57,7 +57,6 @@
     <Content Include="Content\custom.css" />
     <Content Include="features\Auth\controllers\auth.js" />
     <Content Include="features\Auth\controllers\registration.js" />
-    <Content Include="scripts\app\directives\regExpValidation.js" />
     <Content Include="features\Auth\partials\authmenu.htm" />
     <Content Include="features\Auth\services\auth.js" />
     <Content Include="features\Auth\templates\registration.htm" />

@@ -7,8 +7,16 @@
         UserName: '',
         Email: '',
         Password: '',
-        ConfirmPassword: ''
+        ConfirmPassword: '',
+        isPasswordInvalid: function () {
+            return $scope.registrationForm.password.$invalid && !$scope.registrationForm.password.$pristine && $scope.registrationForm.password.$touched;
+        },
+        isConfirmPasswordInvalid: function () {
+            return $scope.registrationForm.password.$valid && $scope.registrationForm.password.$dirty && $scope.registrationForm.password_confirmation.$dirty
+                                       && $scope.registrationForm.password_confirmation.$touched && $scope.user.Password != $scope.user.ConfirmPassword;
+        }
     };
+
     $scope.register = function () {
         if ($scope.registrationForm.$valid) {
             $scope.inProgress = true;
