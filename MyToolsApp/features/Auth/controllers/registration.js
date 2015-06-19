@@ -9,7 +9,7 @@
         Password: '',
         ConfirmPassword: '',
         isPasswordInvalid: function () {
-            return $scope.registrationForm.password.$invalid && !$scope.registrationForm.password.$pristine && $scope.registrationForm.password.$touched;
+            return $scope.registrationForm.password.$invalid && $scope.registrationForm.password.$dirty && $scope.registrationForm.password.$touched;
         },
         isConfirmPasswordInvalid: function () {
             return $scope.registrationForm.password.$valid && $scope.registrationForm.password.$dirty && $scope.registrationForm.password_confirmation.$dirty
