@@ -1,38 +1,62 @@
 ﻿<div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-        <form role="form" name="registrationForm" novalidate>
+        <form role="form" name="registrationForm"  novalidate>
             <h2>Please Sign Up <small>It's free and always will be.</small></h2>
             <hr class="colorgraph">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" ng-model="user.FirstName" required="">
+                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" ng-pattern="/^[a-zA-Z]+(([\'\,\.\-][a-zA-Z])?[a-zA-Z]*)*$/"
+                               placeholder="First Name" tabindex="1" ng-model="user.FirstName" required="">
+                        <div ng-show="isFirstNameInvalid()" class="alert alert-danger fix-alert-placement" role="alert">
+                            First Name is empty or contains wrong characters
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" ng-model="user.LastName" required="">
+                        <input type="text" name="last_name" id="last_name" class="form-control input-lg" ng-pattern="/^[a-zA-Z]+(([\'\,\.\-][a-zA-Z])?[a-zA-Z]*)*$/"
+                               placeholder="Last Name" tabindex="2" ng-model="user.LastName" required="">
+                        <div ng-show="isLastNameInvalid()" class="alert alert-danger fix-alert-placement" role="alert">
+                            Last Name is empty or contains wrong characters
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Display Name" tabindex="3" ng-model="user.UserName" required="" ng-minlength="6">
+                <input type="text" name="user_name" id="user_name" class="form-control input-lg" placeholder="User Name" tabindex="3"
+                       ng-pattern="/^[a-z0-9_-]{3,16}$/" ng-model="user.UserName" required="" ng-blur="checkUsername(user.UserName)">
+                <div ng-show="isUserNameInvalid()" class="alert alert-danger fix-alert-placement" role="alert">
+                    User Name is empty or contains wrong characters
+                </div>
+                <div ng-show="usernameExists" class="alert alert-danger fix-alert-placement" role="alert">
+                    Username exists
+                </div>
             </div>
             <div class="form-group">
-                <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" ng-model="user.Email" required="">
+                <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4"
+                       ng-pattern="/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/"
+                       ng-model="user.Email" required="" ng-blur="checkEmail(user.Email)">
+                <div ng-show="isEmailInvalid()" class="alert alert-danger fix-alert-placement" role="alert">
+                    Email is empty or has wrong format
+                </div>
+                <div ng-show="emailExists" class="alert alert-danger fix-alert-placement" role="alert">
+                    Email exists
+                </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
-                    <div class="form-group">                        
-                        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" ng-model="user.Password" required="" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/" ng-minlength="6">
-                        <p ng-show="user.isPasswordInvalid()" class="validation-error">Password must be at least 6 characters, no more than 15 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit</p>
+                    <div class="form-group">
+                        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" 
+                               ng-model="user.Password" required="" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/" >                        
+                        <div ng-show="isPasswordInvalid()" class="alert alert-danger fix-alert-placement" role="alert">Password must be at least 6 characters, no more than 15 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit</div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6" ng-model="user.ConfirmPassword">
-                        <p ng-show="user.isConfirmPasswordInvalid()"
-                           class="validation-error">Password and Confirm Password do not match</p>
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg"
+                               placeholder="Confirm Password" tabindex="6" ng-model="user.ConfirmPassword" ng-model-options="{ updateOn: 'blur' }">
+                        <div ng-show="isConfirmPasswordInvalid()" class="alert alert-danger fix-alert-placement" role="alert">Password and Confirm Password do not match</div>
                     </div>
                 </div>
             </div>
@@ -48,13 +72,14 @@
             <hr class="colorgraph">
             <div class="row">
                 <div class="col-xs-12 col-md-6">
-                    <a href="#/registration" class="btn btn-primary btn-block btn-lg" ng-class="{ 'disabled': !agree || inProgress }" ng-click="register()" tabindex="8">
+                    <a href="#/registration" class="btn btn-primary btn-block btn-lg" ng-class="{ 'disabled': !agree || submitInProgress }" ng-click="register()" tabindex="8">
                         Register
-                        <span class="glyphicon glyphicon-refresh pull-right" ng-class="{ 'spinning': inProgress }" ng-show="inProgress"></span>
+                        <span class="glyphicon glyphicon-refresh pull-right" ng-class="{ 'spinning': submitInProgress }" ng-show="submitInProgress"></span>
                     </a>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                    <a href="#/registration" class="btn btn-success btn-block btn-lg" tabindex="9" ng-submit="signIn()">Sign In</a>
+                    <a href="#/registration" class="btn btn-success btn-block btn-lg" ng-class="{ 'disabled': inProgress() }"
+                       tabindex="9" ng-submit="signIn()">Sign In</a>
                 </div>
             </div>
         </form>

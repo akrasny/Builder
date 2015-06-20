@@ -16,3 +16,7 @@
 .validation-error{
     color: red;
 }
+
+.fix-alert-placement{
+    margin-top: 5px;
+}

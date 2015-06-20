@@ -342,6 +342,38 @@ namespace Controllers
             return Ok();
         }
 
+        // GET api/Account/EmailExists
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("EmailExists")]
+        public async Task<IHttpActionResult> EmailExists(string email)
+        {
+            ApplicationUser user = await UserManager.FindByEmailAsync(email);
+
+            if (user != null)
+            {
+                return Ok(true);
+            }
+
+            return Ok(false);
+        }
+
+        // GET api/Account/UsernameExists
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("UsernameExists")]
+        public async Task<IHttpActionResult> UsernameExists(string username)
+        {
+            ApplicationUser user = await UserManager.FindByNameAsync(username);
+
+            if (user != null)
+            {
+                return Ok(true);
+            }
+
+            return Ok(false);
+        }
+
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]

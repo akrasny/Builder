@@ -35,21 +35,25 @@ namespace Models
     public class RegisterBindingModel
     {
         [Required]
+        [DataType(DataType.Text)]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = @"Email is empty or contains wrong characters")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [RegularExpression(@"^[a-z0-9_-]{3,16}$", ErrorMessage = @"Username is empty or contains wrong characters")]
         [DataType(DataType.Text)]
         [Display(Name = "UserName")]
         public string UserName { get; set; }
 
         [Required]
+        [RegularExpression(@"^[a-zA-Z]+(([\'\,\.\-][a-zA-Z])?[a-zA-Z]*)*$", ErrorMessage = @"First Name is empty or contains wrong characters")]
         [DataType(DataType.Text)]
         [Display(Name = "FirstName")]
         public string FirstName { get; set; }
 
         [Required]
+        [RegularExpression(@"^[a-zA-Z]+(([\'\,\.\-][a-zA-Z])?[a-zA-Z]*)*$", ErrorMessage = @"Last Name is empty or contains wrong characters")]
         [DataType(DataType.Text)]
         [Display(Name = "LastName")]
         public string LastName { get; set; }
