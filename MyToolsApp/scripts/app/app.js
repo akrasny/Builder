@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var app = angular.module('MyTools', ['ngRoute']);
+var app = angular.module('MyTools', ['ngRoute', 'validation.match']);
 
 //config routs 
 app.config(['$routeProvider',

@@ -67,6 +67,7 @@
     <Content Include="Icon.png" />
     <Content Include="icons\favicon.ico" />
     <Content Include="index.html" />
+    <Content Include="scripts\angular-input-match.js" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-route.js" />
     <Content Include="scripts\angular-route.min.js" />

@@ -1,6 +1,6 @@
 ﻿<div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-        <form role="form" name="registrationForm"  novalidate>
+        <form role="form" name="registrationForm" ng-model-options="{ updateOn: 'blur' }" novalidate>
             <h2>Please Sign Up <small>It's free and always will be.</small></h2>
             <hr class="colorgraph">
             <div class="row">
@@ -47,15 +47,15 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" 
-                               ng-model="user.Password" required="" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/" >                        
+                        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5"
+                               ng-model="user.Password" required="" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/">
                         <div ng-show="isPasswordInvalid()" class="alert alert-danger fix-alert-placement" role="alert">Password must be at least 6 characters, no more than 15 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit</div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
                     <div class="form-group">
                         <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg"
-                               placeholder="Confirm Password" tabindex="6" ng-model="user.ConfirmPassword" ng-model-options="{ updateOn: 'blur' }">
+                               placeholder="Confirm Password" tabindex="6" ng-model="user.ConfirmPassword" match="user.Password">
                         <div ng-show="isConfirmPasswordInvalid()" class="alert alert-danger fix-alert-placement" role="alert">Password and Confirm Password do not match</div>
                     </div>
                 </div>
@@ -72,14 +72,14 @@
             <hr class="colorgraph">
             <div class="row">
                 <div class="col-xs-12 col-md-6">
-                    <a href="#/registration" class="btn btn-primary btn-block btn-lg" ng-class="{ 'disabled': !agree || submitInProgress }" ng-click="register()" tabindex="8">
+                    <a href="#/registration" class="btn btn-primary btn-block btn-lg" ng-class="{ 'disabled': !agree || submitInProgress }" tabindex="8" ng-click="register()">
                         Register
                         <span class="glyphicon glyphicon-refresh pull-right" ng-class="{ 'spinning': submitInProgress }" ng-show="submitInProgress"></span>
                     </a>
                 </div>
                 <div class="col-xs-12 col-md-6">
                     <a href="#/registration" class="btn btn-success btn-block btn-lg" ng-class="{ 'disabled': inProgress() }"
-                       tabindex="9" ng-submit="signIn()">Sign In</a>
+                       tabindex="9" ng-click="signIn()">Sign In</a>
                 </div>
             </div>
         </form>

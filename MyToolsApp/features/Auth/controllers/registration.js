@@ -1,5 +1,6 @@
 ﻿angular.module('MyTools').controller('RegistrationCtrl', ['$scope', '$http', '$log', '$location', 'AuthSvc', function ($scope, $http, $log, $location, AuthSvc) {
     $scope.agree = false;
+    $scope.submitted = false;
     $scope.submitInProgress = false;
     $scope.emailCheckInProgress = false;
     $scope.usernameCheckInProgress = false;
@@ -18,45 +19,57 @@
     $scope.usernameExists = false;
 
     $scope.isFirstNameInvalid = function () {
-        return $scope.registrationForm.first_name.$invalid &&
+        return ($scope.registrationForm.first_name.$invalid &&
                $scope.registrationForm.first_name.$dirty &&
-               $scope.registrationForm.first_name.$touched;
+               $scope.registrationForm.first_name.$touched) ||
+               ($scope.submitted &&
+               $scope.registrationForm.first_name.$invalid);
     };
 
     $scope.isLastNameInvalid = function () {
-        return $scope.registrationForm.last_name.$invalid &&
+        return ($scope.registrationForm.last_name.$invalid &&
                $scope.registrationForm.last_name.$dirty &&
-               $scope.registrationForm.last_name.$touched;
+               $scope.registrationForm.last_name.$touched) ||
+               ($scope.submitted &&
+               $scope.registrationForm.last_name.$invalid);
     };
 
     $scope.isUserNameInvalid = function () {
         return $scope.registrationForm.user_name.$invalid &&
                $scope.registrationForm.user_name.$dirty &&
-               $scope.registrationForm.user_name.$touched;
+               $scope.registrationForm.user_name.$touched ||
+               ($scope.submitted &&
+               $scope.registrationForm.user_name.$invalid);
     };
 
     $scope.isEmailInvalid = function () {
-        return $scope.registrationForm.email.$invalid &&
+        return ($scope.registrationForm.email.$invalid &&
                $scope.registrationForm.email.$dirty &&
-               $scope.registrationForm.email.$touched;
+               $scope.registrationForm.email.$touched) ||
+               ($scope.submitted &&
+               $scope.registrationForm.email.$invalid);
     };
 
     $scope.isPasswordInvalid = function () {
-        return $scope.registrationForm.password.$invalid &&
+        return ($scope.registrationForm.password.$invalid &&
                $scope.registrationForm.password.$dirty &&
-               $scope.registrationForm.password.$touched;
+               $scope.registrationForm.password.$touched) ||
+               ($scope.submitted &&
+               $scope.registrationForm.password.$invalid);
     };
 
     $scope.isConfirmPasswordInvalid = function () {
-        return $scope.registrationForm.password_confirmation.$dirty &&
-               $scope.registrationForm.password_confirmation.$touched &&
-               $scope.user.Password != $scope.user.ConfirmPassword;
+        return ($scope.registrationForm.password_confirmation.$error.match &&
+               $scope.registrationForm.password_confirmation.$dirty &&
+               $scope.registrationForm.password_confirmation.$touched) ||
+               ($scope.submitted &&
+               $scope.registrationForm.password_confirmation.$error.match);
     };
 
     $scope.checkUsername = function (username) {
         if ($scope.registrationForm.user_name.$valid) {
             $scope.usernameCheckInProgress = true;
-            $http.get('/api/Account/UsernameExists', { params: { username: $scope.user.UserName } }).
+            $http.get('/api/Account/UsernameExists', { params: { username: username } }).
               success(function (data, status, headers, config) {
                  $scope.usernameExists = data
               }).
@@ -69,9 +82,10 @@
     };
 
     $scope.checkEmail = function (email) {
+        $log.info(email);
         if ($scope.registrationForm.email.$valid) {
             $scope.emailCheckInProgress = true;
-            $http.get('/api/Account/EmailExists', { params: { email: $scope.user.Email } }).
+            $http.get('/api/Account/EmailExists', { params: { email: email } }).
               success(function (data, status, headers, config) {
                   $scope.emailExists = data;
               }).
@@ -84,6 +98,7 @@
     };
 
     $scope.register = function () {
+        $scope.submitted = true;
         if ($scope.registrationForm.$valid && !$scope.emailExists && !$scope.usernameExists) {
             $scope.submitInProgress=true;
             $http.post('/api/Account/Register', $scope.user).
