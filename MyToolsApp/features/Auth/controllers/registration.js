@@ -90,7 +90,7 @@
                   $scope.emailExists = data;
               }).
               error(function (data, status, headers, config) {
-                  $log.error("RegistrationCtrl.checkUsername error. Status=" + status);
+                  $log.error("RegistrationCtrl.checkEmail error. Status=" + status);
               }).finally(function () {
                   $scope.emailCheckInProgress = false;
               });;
