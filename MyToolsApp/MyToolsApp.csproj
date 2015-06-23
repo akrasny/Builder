@@ -56,9 +56,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
     <Content Include="features\Auth\controllers\auth.js" />
+    <Content Include="features\Auth\controllers\login.js" />
     <Content Include="features\Auth\controllers\registration.js" />
     <Content Include="features\Auth\partials\authmenu.htm" />
     <Content Include="features\Auth\services\auth.js" />
+    <Content Include="features\Auth\templates\login.htm" />
     <Content Include="features\Auth\templates\registration.htm" />
     <Content Include="features\SideMenu\controllers\sidemenu.js" />
     <Content Include="features\SideMenu\partials\sidemenu.htm" />

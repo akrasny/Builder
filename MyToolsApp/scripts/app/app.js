@@ -9,6 +9,9 @@ app.config(['$routeProvider',
         when('/registration', {
             templateUrl: 'features/Auth/templates/registration.htm',
             controller: 'RegistrationCtrl'
+        }).when('/login', {
+            templateUrl: 'features/Auth/templates/login.htm',
+            controller: 'LoginCtrl'
         });
   }]);
 
