@@ -10,6 +10,11 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Providers;
 using Models;
+using Microsoft.Owin.Cors;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web.Http.Cors;
+using System.Web.Cors;
 
 namespace MyToolsAPI
 {
@@ -38,12 +43,15 @@ namespace MyToolsAPI
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(14)
-                //AllowInsecureHttp = true
+                //AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),         
+                AccessTokenExpireTimeSpan = TimeSpan.FromSeconds(15),            
+                AllowInsecureHttp = true
             };
 
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
+       //     app.UseOAuthAuthorizationServer(OAuthOptions);
+      //      app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(

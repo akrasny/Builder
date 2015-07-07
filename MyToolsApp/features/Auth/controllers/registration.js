@@ -1,7 +1,9 @@
-﻿angular.module('MyTools').controller('RegistrationCtrl', ['$scope', '$http', '$log', '$location', 'AuthSvc', function ($scope, $http, $log, $location, AuthSvc) {
+﻿angular.module('MyTools').controller('RegistrationCtrl', ['$scope', '$http', '$log', '$location', 'AuthSvc', 'AppCfg', function ($scope, $http, $log, $location, AuthSvc, AppCfg) {
     $scope.agree = false;
     $scope.submitted = false;
     $scope.submitInProgress = false;
+    $scope.isServerError = false;
+    $scope.serverErrorDescription = '';
     $scope.emailCheckInProgress = false;
     $scope.usernameCheckInProgress = false;
     $scope.inProgress = function () {
@@ -98,18 +100,36 @@
     };
 
     $scope.register = function () {
+        var cfg = AppCfg.configuration;
         $scope.submitted = true;
         if ($scope.registrationForm.$valid && !$scope.emailExists && !$scope.usernameExists) {
-            $scope.submitInProgress=true;
+            $scope.submitInProgress = true;
+            $scope.isServerError = false;
+
             $http.post('/api/Account/Register', $scope.user).
               success(function (data, status, headers, config) {
-                  $location.path('/');
+                  $scope.submitInProgress = true;
+                  AuthSvc.signIn($scope.user.UserName, $scope.user.Password, {
+                      success: function (data) {
+                          sessionStorage.setItem(cfg.tokenKey, data.access_token);
+                          $location.path('/');
+                      },
+                      error: function (data, status) {
+                          $scope.isServerError = true;
+                          $scope.serverErrorDescription = data && data.error_description ? data.error_description : 'Sign In failed';
+                          $log.error("RegistrationCtrl.signIn error. Status=" + status);
+                      },
+                      finished: function () {
+                          $scope.submitInProgress = false;
+                      }
+                  });
               }).
               error(function (data, status, headers, config) {
-                  $log.error("RegistrationCtrl.register error. Status=" + status);
-              }).finally(function () {
                   $scope.submitInProgress = false;
-              });;
+                  $scope.isServerError = true;
+                  $scope.serverErrorDescription = data && data.error_description ? data.error_description : 'Registration failed';
+                  $log.error("RegistrationCtrl.register error. Status=" + status);
+              });
         }
     };
 

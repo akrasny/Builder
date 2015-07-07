@@ -4,12 +4,17 @@
             <h2>Please Sign In </h2>
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div ng-show="isServerError" class="alert alert-danger fix-alert-placement" role="alert">{{serverErrorDescription}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
                     <hr class="colorgraph">
                     <div class="form-group">
                         <input type="text" name="user_name" id="user_name" class="form-control input-lg" placeholder="User Name" tabindex="3"
-                               ng-pattern="/^[a-z0-9_-]{3,16}$/" ng-model="user.UserName" required="">
+                                ng-model="user.UserName" required="">
                         <div ng-show="isUserNameInvalid()" class="alert alert-danger fix-alert-placement" role="alert">
-                            User Name is empty or contains wrong characters
+                            User Name is required
                         </div>
                     </div>
                 </div>
@@ -18,8 +23,8 @@
                 <div class="col-xs-12 col-sm-6 col-md-6">
                     <div class="form-group">
                         <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5"
-                               ng-model="user.Password" required="" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/">
-                        <div ng-show="isPasswordInvalid()" class="alert alert-danger fix-alert-placement" role="alert">Password must be at least 6 characters, no more than 15 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit</div>
+                               ng-model="user.Password" required="" >
+                        <div ng-show="isPasswordInvalid()" class="alert alert-danger fix-alert-placement" role="alert">Password is required</div>
                     </div>
                 </div>
             </div>

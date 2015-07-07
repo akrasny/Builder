@@ -1,1 +1,1 @@
-﻿{"webApiURL":"http://localhost:53333","clientLogging":{"log":true,"info":true,"debug":true,"warn":true,"error":true,"insertDate": false}}
+﻿{"webApiURL":"http://localhost:53333","clientLogging":{"log":true,"info":true,"debug":true,"warn":true,"error":true,"insertDate": false},"tokenKey": "accessToken"}

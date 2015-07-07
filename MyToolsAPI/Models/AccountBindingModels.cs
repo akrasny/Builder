@@ -41,7 +41,7 @@ namespace Models
         public string Email { get; set; }
 
         [Required]
-        [RegularExpression(@"^[a-z0-9_-]{3,16}$", ErrorMessage = @"Username is empty or contains wrong characters")]
+        [RegularExpression(@"^[a-zA-Z0-9_@\.-]{3,16}$", ErrorMessage = @"Username is empty or contains wrong characters")]
         [DataType(DataType.Text)]
         [Display(Name = "UserName")]
         public string UserName { get; set; }

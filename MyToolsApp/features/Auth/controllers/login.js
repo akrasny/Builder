@@ -1,7 +1,9 @@
-﻿angular.module('MyTools').controller('LoginCtrl', ['$scope', '$http', '$log', '$location', 'AuthSvc', function ($scope, $http, $log, $location, AuthSvc) {
+﻿angular.module('MyTools').controller('LoginCtrl', ['$scope',  '$log', '$location', 'AuthSvc', 'AppCfg', function ($scope, $log, $location, AuthSvc, AppCfg) {
     $scope.rememberMe = false;
     $scope.submitted = false;
     $scope.submitInProgress = false;
+    $scope.isServerError = false;
+    $scope.serverErrorDescription = '';
     $scope.user = {
         UserName: '',
         Password: ''
@@ -24,18 +26,26 @@
     };
 
     $scope.signIn = function () {
+        var cfg = AppCfg.configuration;
         $scope.submitted = true;
+        $scope.isServerError = false;
         if ($scope.loginForm.$valid) {
             $scope.submitInProgress = true;
-            //$http.post('/api/Account/Register', $scope.user).
-            //  success(function (data, status, headers, config) {
-            //      $location.path('/');
-            //  }).
-            //  error(function (data, status, headers, config) {
-            //      $log.error("RegistrationCtrl.register error. Status=" + status);
-            //  }).finally(function () {
-            //      $scope.submitInProgress = false;
-            //  });;
+
+            AuthSvc.signIn($scope.user.UserName, $scope.user.Password, {
+                success: function (data) {
+                    sessionStorage.setItem(cfg.tokenKey, data.access_token);
+                    $location.path('/');
+                },
+                error: function (data, status) {
+                    $scope.isServerError = true;
+                    $scope.serverErrorDescription = data && data.error_description ? data.error_description : 'Error occurred';
+                    $log.error("LoginCtrl.signIn error. Status=" + status);
+                },
+                finished: function () {
+                    $scope.submitInProgress = false;
+                }
+            });
         }
     };
 

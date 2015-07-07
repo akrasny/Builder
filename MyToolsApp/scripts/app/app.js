@@ -33,34 +33,57 @@ app.config(['AppCfgProvider', function (AppCfgProvider) {
     });
 }]);
 
-// Get base url for ajax requests from the file and use an interceptor to build the full url
+// Get base url for ajax requests from the file and build the full url, add Authorization header
 app.config(['$httpProvider', '$provide', 'AppCfgProvider',
   function ($httpProvider, $provide, AppCfgProvider) {
     var cfg = AppCfgProvider.$get().configuration;
 
-    $provide.factory('baseURLInterceptor', function () {
+    $provide.factory('modifyReqInterceptor', ['$q', '$location', function ($q, $location) {
         return {
             request:
                 function (config) {
                     var api = config.url.indexOf('api/') == 0,
-                        slashApi = config.url.indexOf('/api/') == 0;
+                        slashApi = config.url.indexOf('/api/') == 0,
+                        tkn = config.url.indexOf('/Token') == 0;
 
-                    if (api) {
-                        config.url = cfg.webApiURL + '/' + config.url;
+                    if (tkn) {
+                        config.url = cfg.webApiURL + '/Token';
                     }
                     else {
-                        if (slashApi) {
-                            config.url = cfg.webApiURL + config.url;
+                        if (api || slashApi) {
+                            var token = sessionStorage.getItem(cfg.tokenKey);
+
+                            if (token) {
+                                config.headers.Authorization = 'Bearer ' + token;
+                            }
+
+                            if (api) {
+                                config.url = cfg.webApiURL + '/' + config.url;
+                            }
+                            else {
+                                config.url = cfg.webApiURL + config.url;
+                            }
                         }
                     }
+
                     return config;
+                },
+            responseError: function (rejection) {
+                if (rejection.status === 401) {
+                    var token = sessionStorage.getItem(cfg.tokenKey);
+                    if (token) {
+                        sessionStorage.removeItem(cfg.tokenKey);
+                        $location.path('/login');
+                    }
                 }
+                return $q.reject(rejection);
+            }
         };
-    });
+    }]);
 
-    $httpProvider.interceptors.push('baseURLInterceptor');
+    $httpProvider.interceptors.push('modifyReqInterceptor');
+}]);
 
-  }]);
 
 //extend logging
 app.config(['$provide', '$logProvider', 'AppCfgProvider', function ($provide, $logProvider, AppCfgProvider) {
