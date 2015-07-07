@@ -12,6 +12,9 @@ app.config(['$routeProvider',
         }).when('/login', {
             templateUrl: 'features/Auth/templates/login.htm',
             controller: 'LoginCtrl'
+        }).when('/profile', {
+            templateUrl: 'features/Auth/templates/profile.htm',
+            controller: 'ProfileCtrl'
         });
   }]);
 

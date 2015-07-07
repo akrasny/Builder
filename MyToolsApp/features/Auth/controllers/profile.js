@@ -1,4 +1,4 @@
-﻿angular.module('MyTools').controller('RegistrationCtrl', ['$scope', '$log', '$location', 'AuthSvc', 'AppCfg', function ($scope, $log, $location, AuthSvc, AppCfg) {
+﻿angular.module('MyTools').controller('ProfileCtrl', ['$scope', 'AppCfg', 'AuthSvc', function ($scope, AppCfg, AuthSvc) {
     $scope.agree = false;
     $scope.submitted = false;
     $scope.submitInProgress = false;
@@ -14,6 +14,7 @@
         LastName: '',
         UserName: '',
         Email: '',
+        Phone: '',
         Password: '',
         ConfirmPassword: ''
     };
@@ -52,6 +53,14 @@
                $scope.registrationForm.email.$invalid);
     };
 
+    $scope.isPhoneInvalid = function () {
+        return ($scope.registrationForm.phone.$invalid &&
+               $scope.registrationForm.phone.$dirty &&
+               $scope.registrationForm.phone.$touched) ||
+               ($scope.submitted &&
+               $scope.registrationForm.phone.$invalid);
+    };
+
     $scope.isPasswordInvalid = function () {
         return ($scope.registrationForm.password.$invalid &&
                $scope.registrationForm.password.$dirty &&
@@ -77,7 +86,7 @@
                     $scope.usernameExists = data;
                 },
                 error: function (data, status) {
-                    $log.error("RegistrationCtrl.checkUsername error. Status=" + status);
+                    $log.error("ProfileCtrl.checkUsername error. Status=" + status);
                 },
                 finished: function () {
                     $scope.usernameCheckInProgress = false;
@@ -95,7 +104,7 @@
                     $scope.emailExists = data;
                 },
                 error: function (data, status) {
-                    $log.error("RegistrationCtrl.checkEmail error. Status=" + status);
+                    $log.error("ProfileCtrl.checkEmail error. Status=" + status);
                 },
                 finished: function () {
                     $scope.emailCheckInProgress = false;
@@ -104,37 +113,11 @@
         }
     };
 
-    $scope.register = function () {
+    $scope.save = function () {
         var cfg = AppCfg.configuration;
         $scope.submitted = true;
-        if ($scope.registrationForm.$valid && !$scope.emailExists && !$scope.usernameExists) {
-            $scope.submitInProgress = true;
-            $scope.isServerError = false;
+    };
 
-            AuthSvc.register($scope.user, { //on register
-                success: function () {
-                    $scope.submitInProgress = true;
-                },
-                error: function (data, status) {
-                    $scope.submitInProgress = false;
-                    $scope.isServerError = true;
-                    $scope.serverErrorDescription = data && data.error_description ? data.error_description : 'Registration failed';
-                    $log.error("RegistrationCtrl.register error. Status=" + status);
-                }
-            }, { //on sign in
-                success: function (data) {
-                    sessionStorage.setItem(cfg.tokenKey, data.access_token);
-                    $location.path('/');
-                },
-                error: function (data, status) {
-                    $scope.isServerError = true;
-                    $scope.serverErrorDescription = data && data.error_description ? data.error_description : 'Sign In failed';
-                    $log.error("RegistrationCtrl.signIn error. Status=" + status);
-                },
-                finished: function () {
-                    $scope.submitInProgress = false;
-                }
-            })
-        }
+    $scope.cancel = function () {
     };
 }]);
