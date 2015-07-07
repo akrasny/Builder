@@ -46,7 +46,6 @@
   <ItemGroup>
     <Folder Include="images\" />
     <Folder Include="Properties\" />
-    <Folder Include="scripts\app\services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.json" />
@@ -82,6 +81,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\app\directives\buttonCheckbox.js" />
+    <Content Include="scripts\app\services\CommonUtils.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-1.9.1.js" />

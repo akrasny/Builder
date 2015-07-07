@@ -1,4 +1,4 @@
-﻿angular.module('MyTools').controller('ProfileCtrl', ['$scope', 'AppCfg', 'AuthSvc', function ($scope, AppCfg, AuthSvc) {
+﻿angular.module('MyTools').controller('ProfileCtrl', ['$scope', 'AppCfg', 'AuthSvc', 'CommonUtilsSvc', function ($scope, AppCfg, AuthSvc, CommonUtilsSvc) {
     $scope.agree = false;
     $scope.submitted = false;
     $scope.submitInProgress = false;
