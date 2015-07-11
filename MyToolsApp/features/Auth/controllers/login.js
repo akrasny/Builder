@@ -1,4 +1,4 @@
-﻿angular.module('MyTools').controller('LoginCtrl', ['$scope',  '$log', '$location', 'AuthSvc', 'AppCfg', function ($scope, $log, $location, AuthSvc, AppCfg) {
+﻿angular.module('MyTools').controller('LoginCtrl', ['$scope', '$log', '$location', 'AuthSvc', 'AppCfg', 'CommonUtilsSvc', function ($scope, $log, $location, AuthSvc, AppCfg, CommonUtilsSvc) {
     $scope.rememberMe = false;
     $scope.submitted = false;
     $scope.submitInProgress = false;
@@ -10,19 +10,11 @@
     };
 
     $scope.isUserNameInvalid = function () {
-        return $scope.loginForm.user_name.$invalid &&
-               $scope.loginForm.user_name.$dirty &&
-               $scope.loginForm.user_name.$touched ||
-               ($scope.submitted &&
-               $scope.loginForm.user_name.$invalid);
+        return CommonUtilsSvc.isFieldInalid($scope.submitted, $scope.loginForm.user_name);
     };
 
     $scope.isPasswordInvalid = function () {
-        return ($scope.loginForm.password.$invalid &&
-               $scope.loginForm.password.$dirty &&
-               $scope.loginForm.password.$touched) ||
-               ($scope.submitted &&
-               $scope.loginForm.password.$invalid);
+        return CommonUtilsSvc.isFieldInalid($scope.submitted, $scope.loginForm.password);
     };
 
     $scope.signIn = function () {

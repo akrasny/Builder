@@ -1,4 +1,4 @@
-﻿angular.module('MyTools').controller('RegistrationCtrl', ['$scope', '$log', '$location', 'AuthSvc', 'AppCfg', function ($scope, $log, $location, AuthSvc, AppCfg) {
+﻿angular.module('MyTools').controller('RegistrationCtrl', ['$scope', '$log', '$location', 'AuthSvc', 'AppCfg', 'CommonUtilsSvc', function ($scope, $log, $location, AuthSvc, AppCfg, CommonUtilsSvc) {
     $scope.agree = false;
     $scope.submitted = false;
     $scope.submitInProgress = false;
@@ -21,51 +21,27 @@
     $scope.usernameExists = false;
 
     $scope.isFirstNameInvalid = function () {
-        return ($scope.registrationForm.first_name.$invalid &&
-               $scope.registrationForm.first_name.$dirty &&
-               $scope.registrationForm.first_name.$touched) ||
-               ($scope.submitted &&
-               $scope.registrationForm.first_name.$invalid);
+        return CommonUtilsSvc.isFieldInalid($scope.submitted, $scope.registrationForm.first_name);
     };
 
     $scope.isLastNameInvalid = function () {
-        return ($scope.registrationForm.last_name.$invalid &&
-               $scope.registrationForm.last_name.$dirty &&
-               $scope.registrationForm.last_name.$touched) ||
-               ($scope.submitted &&
-               $scope.registrationForm.last_name.$invalid);
+        return CommonUtilsSvc.isFieldInalid($scope.submitted, $scope.registrationForm.last_name);
     };
 
     $scope.isUserNameInvalid = function () {
-        return $scope.registrationForm.user_name.$invalid &&
-               $scope.registrationForm.user_name.$dirty &&
-               $scope.registrationForm.user_name.$touched ||
-               ($scope.submitted &&
-               $scope.registrationForm.user_name.$invalid);
+        return CommonUtilsSvc.isFieldInalid($scope.submitted, $scope.registrationForm.user_name);
     };
 
     $scope.isEmailInvalid = function () {
-        return ($scope.registrationForm.email.$invalid &&
-               $scope.registrationForm.email.$dirty &&
-               $scope.registrationForm.email.$touched) ||
-               ($scope.submitted &&
-               $scope.registrationForm.email.$invalid);
+        return CommonUtilsSvc.isFieldInalid($scope.submitted, $scope.registrationForm.email);
     };
 
     $scope.isPasswordInvalid = function () {
-        return ($scope.registrationForm.password.$invalid &&
-               $scope.registrationForm.password.$dirty &&
-               $scope.registrationForm.password.$touched) ||
-               ($scope.submitted &&
-               $scope.registrationForm.password.$invalid);
+        return CommonUtilsSvc.isFieldInalid($scope.submitted, $scope.registrationForm.password);
     };
 
     $scope.isConfirmPasswordInvalid = function () {
-        return ($scope.registrationForm.password_confirmation.$error.match &&
-               $scope.registrationForm.password_confirmation.$dirty &&
-               $scope.registrationForm.password_confirmation.$touched) ||
-               ($scope.submitted &&
-               $scope.registrationForm.password_confirmation.$error.match);
+        return CommonUtilsSvc.isFieldInalid($scope.submitted, $scope.registrationForm.password_confirmation);
     };
 
     $scope.checkUsername = function (username) {
