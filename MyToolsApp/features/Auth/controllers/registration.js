@@ -1,4 +1,5 @@
-﻿angular.module('MyTools').controller('RegistrationCtrl', ['$scope', '$log', '$location', 'AuthSvc', 'AppCfg', 'CommonUtilsSvc', function ($scope, $log, $location, AuthSvc, AppCfg, CommonUtilsSvc) {
+﻿angular.module('MyTools').controller('RegistrationCtrl', ['$scope', '$log', '$location', 'AuthSvc', 'AppCfg', 'CommonUtilsSvc',
+    function ($scope, $log, $location, AuthSvc, AppCfg, CommonUtilsSvc) {
     $scope.agree = false;
     $scope.submitted = false;
     $scope.submitInProgress = false;
