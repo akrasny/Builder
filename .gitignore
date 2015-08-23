@@ -45,5 +45,5 @@ Temporary Items
 */obj/*
 *.user
 *.suo
-node_modules
-bower_components
+*/node_modules/*
+*/bower_components/*

@@ -11,6 +11,11 @@
   ],
   "dependencies": {
     "mocha": "~2.2.5",
-    "chai": "~3.2.0"
+    "chai": "~3.2.0",
+    "angular": "~1.4.4",
+    "angular-route": "~1.4.4",
+    "angular-input-match": "~0.0.2",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4"
   }
 }
