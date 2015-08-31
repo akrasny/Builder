@@ -1,14 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Mocha spec runner</title>
-    <link href="../bower_components/mocha/mocha.css" rel="stylesheet" />
+    <title>Spec runner</title>
 </head>
 
 <body ng-app="MyTools">
 
     <div id="mocha"></div>
-
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="node_modules/chai/chai.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -29,19 +30,10 @@
     <script src="features/Auth/controllers/profile.js"></script>
     <script src="scripts/app/services/CommonUtils.js"></script>
 
-    <script src="../bower_components/mocha/mocha.js"></script>
-    <script src="../bower_components/chai/chai.js"></script>
-
-    <script>
-        mocha.setup('bdd');
-    </script>
-
     <!-- tests -->
     <script src="../test/features/Auth/controllers/registration.spec.js"></script>
 
-    <script>
-        mocha.run();
-    </script>
+    <script>mocha.run()</script>
 </body>
 </html>
 

@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -u bdd -R spec -t 500 --recursive"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "browser-sync": "^2.8.2",
+    "chai": "^3.2.0",
     "gulp": "^3.9.0",
-    "karma": "^0.13.3",
     "mocha": "^2.2.5"
   }
 }
