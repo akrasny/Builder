@@ -3,9 +3,9 @@
         browsers: ['PhantomJS'],
         frameworks: ['mocha'],
         files: [
-            "bower_components/angular/angular.js",
-            "bower_components/angular-route/angular-route.js",
-            "bower_components/angular-input-match/dist/angular-input-match.js",
+            "node_modules/angular/angular.js",
+            "node_modules/angular-route/angular-route.js",
+            "node_modules/angular-input-match/dist/angular-input-match.js",
             "node_modules/chai/chai.js",
 
             //"features/**/*.js",
