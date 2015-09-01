@@ -1,9 +1,6 @@
-﻿var assert = require('assert');
-var expect = require('chai').expect;
-
-describe('Registration controller',
+﻿describe('Registration controller',
     function () {
-        it('email does not exist', function () {
-            assert("undefined" != typeof jQuery, 'jQuery not defined');
+        it('should work', function () {
+            chai.assert.isArray([]);
         });
-    });
+ });
