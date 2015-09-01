@@ -14,6 +14,8 @@
             //"scripts/app/services/*.js",
             "test/**/*.js"
 
-        ]
+        ],
+        singleRun: true,
+        reporters: ['mocha']
     });
 }

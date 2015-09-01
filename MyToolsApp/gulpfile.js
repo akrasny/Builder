@@ -35,10 +35,7 @@ gulp.task('serve-test', ['server'], function () {
 
 gulp.task('test-browser', function () {
     new KarmaServer({
-        configFile: __dirname + '/karma.conf.js',
-        singleRun: true,
-        reporters: ['mocha'],
-        plugins: ['karma-mocha','karma-phantomjs-launcher']
+        configFile: __dirname + '/karma.conf.js'
     }).start();
 });
 
