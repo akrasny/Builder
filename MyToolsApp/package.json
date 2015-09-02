@@ -11,6 +11,7 @@
   "dependencies": {},
   "devDependencies": {
     "angular": "^1.4.5",
+    "angular-mocks": "^1.4.5",
     "angular-route": "^1.4.5",
     "angular-validation-match": "^1.5.2",
     "bootstrap": "^3.3.5",
