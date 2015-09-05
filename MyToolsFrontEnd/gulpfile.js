@@ -18,7 +18,7 @@ gulp.task('serve', function () {
     gulp.watch(['./**/*.*']).on('change', browserSync.reload);
 });
 
-gulp.task('serve-test', ['server'], function () {
+gulp.task('serve-test', function () {
     browserSync.init({
         notify: false,
         port: 8081,

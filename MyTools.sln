@@ -3,34 +3,55 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MyTools", ".", "{281B423F-63DA-4188-BF2F-2E8827001940}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyToolsAPI", "MyToolsAPI\MyToolsAPI.csproj", "{1D3504D8-3D6F-4E59-BA71-C0C3C7FAD3A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyToolsAPI.Tests", "MyToolsAPI.Tests\MyToolsAPI.Tests.csproj", "{BD282E84-477B-46DA-84DA-2FE9921C509A}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MyToolsFrontEnd", "MyToolsFrontEnd\", "{2B37850F-EC9B-450D-ABA9-F6833D0BB7A6}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_55074"
-		Debug.AspNetCompiler.PhysicalPath = "..\MyTools\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55074\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62550"
+		Debug.AspNetCompiler.PhysicalPath = "MyToolsFrontEnd\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62550\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_55074"
-		Release.AspNetCompiler.PhysicalPath = "..\MyTools\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55074\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62550"
+		Release.AspNetCompiler.PhysicalPath = "MyToolsFrontEnd\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62550\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "55074"
-		SlnRelativePath = "..\MyTools\"
+		VWDPort = "62550"
+		SlnRelativePath = "MyToolsFrontEnd\"
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{042D2A3C-8470-44C2-8DE8-9A42AF405747}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{281B423F-63DA-4188-BF2F-2E8827001940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{281B423F-63DA-4188-BF2F-2E8827001940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D3504D8-3D6F-4E59-BA71-C0C3C7FAD3A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D3504D8-3D6F-4E59-BA71-C0C3C7FAD3A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D3504D8-3D6F-4E59-BA71-C0C3C7FAD3A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D3504D8-3D6F-4E59-BA71-C0C3C7FAD3A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD282E84-477B-46DA-84DA-2FE9921C509A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD282E84-477B-46DA-84DA-2FE9921C509A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD282E84-477B-46DA-84DA-2FE9921C509A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD282E84-477B-46DA-84DA-2FE9921C509A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B37850F-EC9B-450D-ABA9-F6833D0BB7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B37850F-EC9B-450D-ABA9-F6833D0BB7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B37850F-EC9B-450D-ABA9-F6833D0BB7A6}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B37850F-EC9B-450D-ABA9-F6833D0BB7A6}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{042D2A3C-8470-44C2-8DE8-9A42AF405747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{042D2A3C-8470-44C2-8DE8-9A42AF405747}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{042D2A3C-8470-44C2-8DE8-9A42AF405747}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{042D2A3C-8470-44C2-8DE8-9A42AF405747}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

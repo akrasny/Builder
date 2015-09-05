@@ -111,7 +111,7 @@
                 finished: function () {
                     $scope.submitInProgress = false;
                 }
-            })
+            });
         }
     };
 }]);

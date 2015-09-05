@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Spec runner</title>
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css"/>
+</head>
+
+<body ng-app="MyTools">
+
+    <div id="mocha"></div>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="node_modules/chai/chai.js"></script>
+    <script src="node_modules/sinon/lib/sinon.js"></script>
+    <script src="node_modules/sinon/lib/sinon/util/core.js"></script>
+    <script src="node_modules/sinon/lib/sinon/extend.js"></script>
+    <script src="node_modules/sinon/lib/sinon/typeOf.js"></script>
+    <script src="node_modules/sinon/lib/sinon/times_in_words.js"></script>
+    <script src="node_modules/sinon/lib/sinon/spy.js"></script>
+    <script src="node_modules/sinon/lib/sinon/call.js"></script>
+    <script src="node_modules/sinon/lib/sinon/behavior.js"></script>
+    <script src="node_modules/sinon/lib/sinon/stub.js"></script>
+    <script src="node_modules/sinon/lib/sinon/mock.js"></script>
+    <script src="node_modules/sinon/lib/sinon/collection.js"></script>
+    <script src="node_modules/sinon/lib/sinon/assert.js"></script>
+    <script src="node_modules/sinon/lib/sinon/sandbox.js"></script>
+    <script src="node_modules/sinon/lib/sinon/test.js"></script>
+    <script src="node_modules/sinon/lib/sinon/test_case.js"></script>
+    <script src="node_modules/sinon/lib/sinon/match.js"></script>
+    <script src="node_modules/sinon/lib/sinon/format.js"></script>
+    <script src="node_modules/sinon/lib/sinon/log_error.js"></script>
+    <script src="node_modules/sinon/lib/sinon/util/event.js"></script>
+    <script src="node_modules/sinon/lib/sinon/util/fake_server.js"></script>
+    <script src="node_modules/sinon/lib/sinon/util/fake_server_with_clock.js"></script>
+    <script src="node_modules/sinon/lib/sinon/util/fake_timers.js"></script>
+    <script src="node_modules/sinon/lib/sinon/util/fake_xdomain_request.js"></script>
+    <script src="node_modules/sinon/lib/sinon/util/fake_xml_http_request.js"></script>
+    <script src="node_modules/sinon/lib/sinon/util/timers_ie.js"></script>
+    <script src="node_modules/sinon/lib/sinon/util/xdr_ie.js"></script>
+    <script src="node_modules/sinon/lib/sinon/util/xhr_ie.js"></script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-mocks/angular-mocks.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/angular-validation-match/dist/angular-validation-match.min.js"></script>
+
+    
+    <!-- application js -->
+    <script src="scripts/app/app.js"></script>
+    <script src="features/Auth/services/auth.js" type="text/javascript"></script>
+    <script src="features/Auth/controllers/auth.js" type="text/javascript"></script>
+    <script src="scripts/app/directives/buttonCheckbox.js"></script>
+    <script src="features/Auth/controllers/registration.js"></script>
+    <script src="features/Auth/controllers/login.js"></script>
+    <script src="features/Auth/controllers/profile.js"></script>
+    <script src="scripts/app/services/CommonUtils.js"></script>
+
+    <!-- tests -->
+    <script src="test/features/Auth/controllers/registration.spec.js"></script>
+    <script src="test/features/Auth/services/auth.spec.js"></script>
+
+    <script>mocha.run()</script>
+</body>
+</html>
+
