@@ -13,7 +13,7 @@
             "scripts/app/app.js",
             //"scripts/app/directives/*.js",
             //"scripts/app/services/*.js",
-            "test/**/*.js"
+            "test/features/Auth/unit/**/*.js"
 
         ],
         singleRun: true,

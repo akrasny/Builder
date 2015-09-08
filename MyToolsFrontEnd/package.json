@@ -22,11 +22,14 @@
     "gulp-live-server": "0.0.25",
     "jquery": "^2.1.4",
     "karma": "^0.13.9",
+    "karma-cli": "^0.1.0",
     "karma-mocha": "^0.2.0",
     "karma-mocha-reporter": "^1.1.1",
     "karma-phantomjs-launcher": "^0.2.1",
     "mocha": "^2.2.5",
     "phantomjs": "^1.9.18",
-    "sinon": "^1.16.1"
+    "protractor": "^2.2.0",
+    "sinon": "^1.16.1",
+    "webdriver-manager": "^7.0.1"
   }
 }
