@@ -23,6 +23,19 @@ app.value('AppCfg', {});
 
 // Cache the app configuration file in AppCfg service
 app.config(['AppCfgProvider', function (AppCfgProvider) {
+    AppCfgProvider.$get().configuration = {
+            "webApiURL": "http://localhost:53333",
+            "clientLogging":
+                {
+                    "log": true,
+                    "info": true,
+                    "debug": true,
+                    "warn": true,
+                    "error": true,
+                    "insertDate": false
+                },
+            "tokenKey": "accessToken"
+    }
     $.ajax({
         method: "GET",
         url: "app.json",
