@@ -15,6 +15,18 @@ app.config(['$routeProvider',
         }).when('/profile', {
             templateUrl: 'features/Auth/templates/profile.htm',
             controller: 'ProfileCtrl'
+        }).when('/reader', {
+            templateUrl: 'features/Reader/templates/reader.htm',
+            controller: 'ReaderCtrl'
+        }).when('/reader/bookshelf', {
+            templateUrl: 'features/Reader/templates/bookshelf.htm',
+            controller: 'BookshelfCtrl'
+        }).when('/reader/localbook', {
+            templateUrl: 'features/Reader/templates/localbook.htm',
+            controller: 'LocalBookCtrl'
+        }).when('/reader/onlinelibrary', {
+            templateUrl: 'features/Reader/templates/onlinelibrary.htm',
+            controller: 'OnLineLibraryCtrl'
         });
   }]);
 
