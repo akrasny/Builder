@@ -27,6 +27,9 @@ app.config(['$routeProvider',
         }).when('/reader/onlinelibrary', {
             templateUrl: 'features/Reader/templates/onlinelibrary.htm',
             controller: 'OnLineLibraryCtrl'
+        }).when('/reader/settings', {
+            templateUrl: 'features/Reader/templates/settings.htm',
+            controller: 'SettingsCtrl'
         });
   }]);
 

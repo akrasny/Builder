@@ -1,0 +1,36 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-3 col-md-offset-3">
+        <form role="form" name="loginForm" novalidate>
+            <h2>Reader Settings</h2>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    <div ng-show="isServerError" class="alert alert-danger fix-alert-placement" role="alert">{{serverErrorDescription}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    <hr class="colorgraph">
+                    <div class="form-group">
+                        <!--<input type="text" name="user_name" id="user_name" class="form-control input-lg" placeholder="eBook Folder" tabindex="3"
+                               value="{{path}}" readonly required="">-->
+                        <file></file>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    <hr class="colorgraph">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-sm-8">
+                    <a href="#/login" class="btn btn-primary btn-block btn-lg"
+                       tabindex="9" ng-click="save()">
+                        Save
+                        <span class="glyphicon glyphicon-refresh pull-right" ng-class="{ 'spinning': submitInProgress }" ng-show="submitInProgress"></span>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
