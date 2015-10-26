@@ -4,26 +4,39 @@
         replace: false,
         scope: {
             textBoxClass: '@',
+            textBoxOuterClass: '@',
             buttonClass: '@',
+            buttonOuterClass: '@',
             placeholder: '@',
             textBoxTabindex: '@',
             buttonTabindex: '@',
             buttonText: '@',
             state: '='
         },
-        template: '<div class="row"><div class="col-md-10"><input type="text" class="{{textBoxClass}}"' +
+        template: '<div class="row"><input type="file" multiple accept=".epub" style="display:none">' +
+                  '<div class="{{textBoxOuterClass}}"><input type="text" class="{{textBoxClass}}"' +
                   ' placeholder="{{placeholder}}" tabindex="{{tabindex}}"' + ' readonly /> </div>' +
-                  '<div class="col-md-1"><a href="#" class="{{buttonClass}}">{{buttonText}}</a></div></div>',
+                  '<div class="{{buttonOuterClass}}"><a href="#" class="{{buttonClass}}">{{buttonText}}</a></div></div>',
         link: function (scope, element, attrs) {
-            var button = $(angular.element(element.children()[0])).find('a'),
-                textBox = $(angular.element(element.children()[0])).find('input');
+            var $widget = $(angular.element(element.children()[0]));
+                $button = $widget.find('a').first(),
+                $textBox = $widget.find('input[type="text"]').first(),
+                $hiddenInputFile = $widget.find('input[type="file"]').first();
 
             if (!angular.isDefined(scope.textBoxClass)) {
                 scope.textBoxClass = 'form-control input-lg';
             }
 
+            if (!angular.isDefined(scope.textBoxOuterClass)) {
+                scope.textBoxOuterClass = 'col-md-8';
+            }
+
             if (!angular.isDefined(scope.buttonClass)) {
                 scope.buttonClass = 'btn btn-primary btn-block btn-lg';
+            }
+
+            if (!angular.isDefined(scope.buttonOuterClass)) {
+                scope.buttonOuterClass = 'col-md-4';
             }
 
             if (!angular.isDefined(scope.placeholder)) {
@@ -42,44 +55,14 @@
                 scope.buttonText = 'Browse...';
             }
 
-            button.click(function (e) {
-                alert('dfbnxcv');
+            $widget.find('a,input[type="text"]').click(function (e) {
+                $hiddenInputFile.click();
                 e.preventDefault();
             });
 
             //if (!angular.isDefined(scope.state)) {
             //    scope.state = false;
             //}
-
-            //$('.button-checkbox').each(function () {
-            //    // Settings
-            //    var $widget = $(this),
-            //        $button = $widget.find(scope.name + '_a'),
-            //        color = scope.color,
-            //        settings = {
-            //            on: {
-            //                icon: 'glyphicon glyphicon-check'
-            //            },
-            //            off: {
-            //                icon: 'glyphicon glyphicon-unchecked'
-            //            }
-            //        };
-
-            //    // Event Handlers
-            //    $button.on('click', function () {
-            //        updateDisplay(true);
-            //        scope.state = $button.data('state') == 'on' ? true : false;
-            //        scope.$apply();
-            //    });
-
-            //    // Actions
-
-
-            //    // Initialization
-            //    function init() {
-            //    }
-            //    init();
-            //});
         }
     };
 });
