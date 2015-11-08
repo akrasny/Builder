@@ -11,9 +11,9 @@
             textBoxTabindex: '@',
             buttonTabindex: '@',
             buttonText: '@',
-            state: '='
+            filesSelected: '='
         },
-        template: '<div class="row"><input type="file" multiple accept=".epub" style="display:none">' +
+        template: '<div class="row"><input type="file" accept=".epub" style="display:none">' +
                   '<div class="{{textBoxOuterClass}}"><input type="text" class="{{textBoxClass}}"' +
                   ' placeholder="{{placeholder}}" tabindex="{{tabindex}}"' + ' readonly /> </div>' +
                   '<div class="{{buttonOuterClass}}"><a href="#" class="{{buttonClass}}">{{buttonText}}</a></div></div>',
@@ -60,9 +60,15 @@
                 e.preventDefault();
             });
 
-            //if (!angular.isDefined(scope.state)) {
-            //    scope.state = false;
-            //}
+            $widget.find('input[type="file"]').on("change", function (evt) {
+                var files = evt.target.files;
+                
+                $textBox.val(files[0].name);
+                
+                if (angular.isDefined(scope.filesSelected)) {
+                    scope.filesSelected(evt.target.files);
+                }
+            });
         }
     };
 });

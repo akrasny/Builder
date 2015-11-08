@@ -21,6 +21,7 @@
     "gulp": "^3.9.0",
     "gulp-live-server": "0.0.29",
     "jquery": "^2.1.4",
+    "jszip": "^2.5.0",
     "karma": "^0.13.11",
     "karma-cli": "^0.1.1",
     "karma-mocha": "^0.2.0",
