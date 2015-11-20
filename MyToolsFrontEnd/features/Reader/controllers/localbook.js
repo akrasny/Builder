@@ -6,8 +6,16 @@
         $scope.files = files;
     }
     $scope.read = function () {
-        var book = new Book(new ZipFileHandler($scope.files[0]));
-        book.open();
+        var zipFileHandler = new SmartEpub.ZipFileHandler($scope.files[0]),
+            book = new SmartEpub.Book(zipFileHandler);
+
+        zipFileHandler.openZip(function () {
+            //$scope.zipContent = $sce.trustAsHtml(zipFileHandler.getReadingOrderFile());
+            //zipFileHandler.getContainer();
+            $scope.zipContent = $sce.trustAsHtml(zipFileHandler.getTocFile());
+            $scope.$apply();
+        });
+
         //zip.read($scope.files[0], function (res) {
         //    $scope.zipContent = $sce.trustAsHtml(res);
         //    $scope.$apply();

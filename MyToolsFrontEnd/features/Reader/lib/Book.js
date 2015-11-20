@@ -9,11 +9,17 @@ SmartEpub.Book.prototype = function () {
     var _getToc = function () {
 
     },
-    _open = function () {
+    _open = function (successCb, errorCb) {
         zipFileHandler.openZip(
             function () {
+                if (successCb) {
+                    successCb();
+                }
             }, //success callback
             function (msg) {
+                if (errorCb) {
+                    errorCb(msg);
+                }
             }); //error callback
     }
 

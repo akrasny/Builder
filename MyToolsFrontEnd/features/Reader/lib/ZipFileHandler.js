@@ -28,13 +28,61 @@ SmartEpub.ZipFileHandler.prototype = function () {
             }
         })(this.file);
 
-        // read the file !
-        // readAsArrayBuffer and readAsBinaryString both produce valid content for JSZip.
         reader.readAsArrayBuffer(this.file);
-        // reader.readAsBinaryString(f);
+    },
+    _getTocFile = function () {
+        var readingOrderFile = _getReadingOrderFile(),
+            $xmlDoc = $($.parseXML(readingOrderFile)),
+            tocId = $xmlDoc.find('spine').attr('toc'),
+            tocFileName,
+            tocFullPath;
+
+        $xmlDoc.find('manifest').first().find('item').each(function () {
+            if ($(this).attr('id') == tocId) {
+                tocFileName = $(this).attr('href');
+            }
+        });
+
+        if (tocFileName) {
+            $.each(_zip.files, function (index, zipEntry) {
+                if (zipEntry.name.indexOf(tocFileName) != -1) {
+                    tocFullPath = zipEntry.name;
+                }
+            });
+        }
+
+        return _checkIfFileExistsAndReturnAsText(tocFullPath);
+    },
+    _checkIfFileExistsAndReturnAsText = function (path) {
+        var zPath = _zip.file(path);
+        if (zPath) {
+            return zPath.asText();
+        }
+        return null;
+    },
+    _getMimetypeFile = function () {
+        return _checkIfFileExistsAndReturnAsText('mimetype');
+    },
+    _getContainerFile = function () {
+        return _checkIfFileExistsAndReturnAsText('META-INF/container.xml');
+    },
+    _getReadingOrderFileName = function () {
+        var container = _getContainerFile(),
+        $xmlDoc = $($.parseXML(container)),
+        opfFullPath = $xmlDoc.find('rootfiles').first().find('rootfile').first().attr('full-path');
+
+        return opfFullPath;
+    },
+    _getReadingOrderFile = function () {
+        return _checkIfFileExistsAndReturnAsText(_getReadingOrderFileName());
     }
+
     //public
     return {
-        openZip: _openZip
+        openZip: _openZip,
+        getTocFile: _getTocFile,
+        getMimetypeFile: _getMimetypeFile,
+        getContainerFile: _getContainerFile,
+        getReadingOrderFile: _getReadingOrderFile
     }
 }();
