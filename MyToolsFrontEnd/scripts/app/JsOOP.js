@@ -23,7 +23,6 @@
         if (obj) {
             for (var attrname in obj) {
                 pubObj += attrname + ': ' + obj[attrname] + ',';
-                //Object.keys(o).length
             }
             pubObj.slice(0, pubObj.length - 2);
         }
@@ -48,6 +47,7 @@
 
             if (parent) {
                 inheritsFrom(_class, parent);
+                _class.prototype.super = parent;
             }
 
             copyProperties(_class.prototype, classProto);
@@ -72,10 +72,37 @@ var ClassA = JsOOP.createClass({
         }
     },
     'public': {
-        pubFunA: 'privFunA'
+        pubFunA: function () {
+            console.log('pubFunA');
+        }
     }
 });
 
+var ClassB = JsOOP.createClass({
+    'constructor': function (a, b) {
+        this.super(a, b);
+        this.pubVarBA = a;
+        this.pubVarBB = b;
+    },
+    'private': {
+        privVarBA: 10,
+        privVarBB: 20,
+        privFunBA: function (param) {
+            return param + privVarBA + privVarBB + this.pubVarBA + this.pubVarA;
+        }
+    },
+    'public': {
+        pubFunBA: 'privFunBA'
+    }
+}, ClassA);
+
 //var classA = new ClassA(10, 20);
-//console.log('classA.pubVarA + classA.pubVarB: ' + (classA.pubVarA + classA.pubVarB));
-//console.log('classA.pubFunA: ' + classA.pubFunA(3));
+//console.log('classA - classA.pubVarA + classA.pubVarB: ' + (classA.pubVarA + classA.pubVarB));
+//console.log('classA - classA.pubFunA: ' + classA.pubFunA(3));
+
+//var classB = new ClassB(100, 200);
+//console.log('classB - classB.pubVarBA + classB.pubVarBA: ' + (classB.pubVarBA + classB.pubVarBB));
+//console.log('classB - classB.pubFunAA: ' + classB.pubFunBA(30));
+//console.log('classB - classB.pubFunA: ' + classB.pubFunA(30));
+//console.log('classB - classB.pubVarA: ' + classB.pubVarA);
+
