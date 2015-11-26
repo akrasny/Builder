@@ -56,45 +56,42 @@
         }
         return null;
     }
-
 }(window.JsOOP = window.JsOOP || {}));
 
-var ClassA = JsOOP.createClass({
-    'constructor': function(a, b){
-        this.pubVarA = a;
-        this.pubVarB = b;
-    },
-    'private': {
-        privVarA: 1,
-        privVarB: 2,
-        privFunA: function(param){
-            return param + privVarA + privVarB;
-        }
-    },
-    'public': {
-        pubFunA: function () {
-            console.log('pubFunA');
-        }
-    }
-});
+//var ClassA = JsOOP.createClass({
+//    'constructor': function(a, b){
+//        this.pubVarA = a;
+//        this.pubVarB = b;
+//    },
+//    'private': {
+//        privVarA: 1,
+//        privVarB: 2,
+//        privFunA: function(param){
+//            return param + privVarA + privVarB;
+//        }
+//    },
+//    'public': {
+//        pubFunA: 'privFunA'
+//    }
+//});
 
-var ClassB = JsOOP.createClass({
-    'constructor': function (a, b) {
-        this.super(a, b);
-        this.pubVarBA = a;
-        this.pubVarBB = b;
-    },
-    'private': {
-        privVarBA: 10,
-        privVarBB: 20,
-        privFunBA: function (param) {
-            return param + privVarBA + privVarBB + this.pubVarBA + this.pubVarA;
-        }
-    },
-    'public': {
-        pubFunBA: 'privFunBA'
-    }
-}, ClassA);
+//var ClassB = JsOOP.createClass({
+//    'constructor': function (a, b) {
+//        this.super(a, b);
+//        this.pubVarBA = a;
+//        this.pubVarBB = b;
+//    },
+//    'private': {
+//        privVarBA: 10,
+//        privVarBB: 20,
+//        privFunBA: function (param) {
+//            return param + privVarBA + privVarBB + this.pubVarBA + this.pubVarA;
+//        }
+//    },
+//    'public': {
+//        pubFunBA: 'privFunBA'
+//    }
+//}, ClassA);
 
 //var classA = new ClassA(10, 20);
 //console.log('classA - classA.pubVarA + classA.pubVarB: ' + (classA.pubVarA + classA.pubVarB));

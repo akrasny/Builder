@@ -54,9 +54,11 @@ SmartEpub.ZipFileHandler.prototype = function () {
         return _checkIfFileExistsAndReturnAsText(tocFullPath);
     },
     _checkIfFileExistsAndReturnAsText = function (path) {
-        var zPath = _zip.file(path);
-        if (zPath) {
-            return zPath.asText();
+        if (path) {
+            var zPath = _zip.file(path);
+            if (zPath) {
+                return zPath.asText();
+            }
         }
         return null;
     },
@@ -83,6 +85,7 @@ SmartEpub.ZipFileHandler.prototype = function () {
         getTocFile: _getTocFile,
         getMimetypeFile: _getMimetypeFile,
         getContainerFile: _getContainerFile,
-        getReadingOrderFile: _getReadingOrderFile
+        getReadingOrderFile: _getReadingOrderFile,
+        getFile: _checkIfFileExistsAndReturnAsText
     }
 }();

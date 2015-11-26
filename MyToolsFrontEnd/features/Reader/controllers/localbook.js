@@ -12,7 +12,9 @@
         zipFileHandler.openZip(function () {
             //$scope.zipContent = $sce.trustAsHtml(zipFileHandler.getReadingOrderFile());
             //zipFileHandler.getContainer();
-            $scope.zipContent = $sce.trustAsHtml(zipFileHandler.getTocFile());
+            //$scope.zipContent = $sce.trustAsHtml(zipFileHandler.getTocFile());
+            var toc = new SmartEpub.TOC(zipFileHandler.getTocFile());
+            $scope.zipContent = $sce.trustAsHtml(toc.getDocTitle());
             $scope.$apply();
         });
 

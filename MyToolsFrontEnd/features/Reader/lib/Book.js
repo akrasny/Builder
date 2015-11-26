@@ -7,7 +7,7 @@ SmartEpub.Book = function (zipFileHandler) {
 SmartEpub.Book.prototype = function () {
     //private 
     var _getToc = function () {
-
+        var tocFile = this.zipFileHandler.getTocFile();
     },
     _open = function (successCb, errorCb) {
         zipFileHandler.openZip(
